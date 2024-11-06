@@ -17,6 +17,17 @@ This project brings together two advanced algorithms:
 - **Flexibility**: Supports various configurations for single, dual, and triple tracking setups, adaptable to different use cases.
 - **Benchmarking and Performance Evaluation**: Includes scripts to benchmark the model and assess accuracy and runtime performance.
 
+## Technologies Used
+
+- **Languages**: Python
+- **Deep Learning Framework**: PyTorch
+- **Computer Vision**: OpenCV
+- **Object Detection**: YOLOv9
+- **Object Tracking**: DeepSORT
+- **GPU Acceleration**: CUDA (optional)
+- **Dependencies Management**: Pip (via `requirements.txt`)
+- **Version Control**: Git
+
 ## How It Works
 
 1. **Detection with YOLOv9**:
