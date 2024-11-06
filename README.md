@@ -1,6 +1,4 @@
-# Writing the provided README content to a new README.md file
-
-readme_content = """# YOLOv9 + DeepSORT: Real-Time Object Detection and Tracking
+# YOLOv9 + DeepSORT: Real-Time Object Detection and Tracking
 
 This project combines **YOLOv9** for object detection and **DeepSORT** for object tracking, creating a powerful tool for real-time video analytics and multi-object tracking. The integrated system can detect and track multiple objects across video frames, supporting various applications such as surveillance, traffic monitoring, and automated inspection.
 
@@ -56,3 +54,48 @@ This integrated system addresses several real-world challenges:
 2. Install Dependecies:
    ```bash
    git install -r requirements.txt
+
+### Usage
+1. Single Camera Detection and Tracking:
+   ```bash
+   python detect.py --source your_video.mp4 --output results/
+2. Dual Camera Detection and Tracking:
+   ```bash
+   python detect_dual.py --source video1.mp4 video2.mp4 --output results/
+3. Triple Camera Detection and Tracking:
+   ```bash
+   python detect_triple.py --source video1.mp4 video2.mp4 video3.mp4 --output results/
+
+### Training
+- **To Train YOLO on Custom Data**
+   ```bash
+   python train.py --data data.yaml --cfg yolov9.yaml --weights yolov9.pt
+
+### Benchmarks and Evaluation
+- **To evaluate Model's Performance**
+  ```bash
+  python benchmarks.py --source your_test_dataset/
+
+## Folder Structure
+
+- **classify/**: Scripts for image classification tasks.
+- **detect.py, detect_dual.py, detect_triple.py**: Main scripts for detection and tracking with single, dual, and triple cameras.
+- **train.py, train_dual.py, train_triple.py**: Training scripts for single, dual, and triple models.
+- **val.py, val_dual.py, val_triple.py**: Validation scripts.
+- **benchmarks.py**: Script to benchmark model performance.
+- **requirements.txt**: Lists required packages.
+
+## Example Outputs
+
+The system outputs video files with tracked objects labeled and annotated across frames. Each object is assigned a unique ID, making it easy to follow their movement over time.
+
+## Resources and Further Reading
+
+- **YOLOv9 Paper**: [Read YOLOv9](https://arxiv.org/pdf/1706.03762.pdf)
+- **DeepSORT Paper**: [Read DeepSORT](https://arxiv.org/pdf/1703.07402.pdf)
+- **Object Tracking Overview**: [Tracking in Computer Vision](https://www.cs.cmu.edu/~kkitani/pdf/kitani/kitani_iccv13.pdf)
+
+  
+   
+
+
