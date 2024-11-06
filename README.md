@@ -1,72 +1,58 @@
-<H1 align="center">
-YOLOv9 Object Detection with DeepSORT Tracking(ID + Trails) </H1>
+# Writing the provided README content to a new README.md file
 
-### New Features
-- Added Label for Every Track
-- Code can run on Both (CPU & GPU)
-- Video/WebCam/External Camera/IP Stream Supported
+readme_content = """# YOLOv9 + DeepSORT: Real-Time Object Detection and Tracking
 
-## Ready to Use Google Colab
-[`Google Colab File`](https://colab.research.google.com/drive/1IivrmAtnhpQ1PSmWsp-G6EnqsUOol9v8?usp=sharing)
+This project combines **YOLOv9** for object detection and **DeepSORT** for object tracking, creating a powerful tool for real-time video analytics and multi-object tracking. The integrated system can detect and track multiple objects across video frames, supporting various applications such as surveillance, traffic monitoring, and automated inspection.
 
-## Steps to run Code
+## Project Overview
 
-- Clone the repository
-```
-git clone https://github.com/MuhammadMoinFaisal/YOLOv9-DeepSORT-Object-Tracking.git
-```
-- Goto the cloned folder.
-```
-cd YOLOv9-DeepSORT-Object-Tracking
-```
-- Install requirements with mentioned command below.
-```
-pip install -r requirements.txt
-```
-- Download the pre-trained YOLOv9 model weights
-[yolov9](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c.pt)
+### What is This Project?
 
-- Downloading the DeepSORT Files From The Google Drive 
-```
-gdown "https://drive.google.com/uc?id=11ZSZcG-bcbueXZC3rN08CM0qqX3eiHxf&confirm=t"
-```
-- After downloading the DeepSORT Zip file from the drive, unzip it. 
+This project brings together two advanced algorithms:
+- **YOLOv9** (You Only Look Once): A state-of-the-art, real-time object detection algorithm that provides high accuracy and speed, capable of detecting multiple object classes in a single forward pass.
+- **DeepSORT** (Simple Online and Realtime Tracking with a Deep Association Metric): A multi-object tracking algorithm that associates detected objects across frames using motion and appearance cues, making it robust for real-world applications.
 
-- Download sample videos from the Google Drive
-```
-gdown "https://drive.google.com/uc?id=115RBSjNQ_1zjvKFRsQK2zE8v8BIRrpdy&confirm=t"
-gdown "https://drive.google.com/uc?id=1rjBn8Fl1E_9d0EMVtL24S9aNQOJAveR5&confirm=t"
-```
-```
-# for detection only
-python detect_dual.py --weights 'yolov9-c.pt' --source 'your video.mp4' --device 0
+### Key Features
 
-#for detection and tracking
-python detect_dual_tracking.py --weights 'yolov9-c.pt' --source 'your video.mp4' --device 0
+- **Real-Time Detection and Tracking**: Capable of handling high FPS video streams.
+- **Multi-Object Tracking**: Tracks multiple object instances, assigning unique IDs for each instance.
+- **Flexibility**: Supports various configurations for single, dual, and triple tracking setups, adaptable to different use cases.
+- **Benchmarking and Performance Evaluation**: Includes scripts to benchmark the model and assess accuracy and runtime performance.
 
-#for WebCam
-python detect_dual_tracking.py --weights 'yolov9-c.pt' --source 0 --device 0
+## How It Works
 
-#for External Camera
-python detect_dual_tracking.py --weights 'yolov9-c.pt' --source 1 --device 0
+1. **Detection with YOLOv9**:
+   YOLOv9 detects objects in each frame of a video, classifying them into predefined classes. This model outputs bounding boxes and class scores for each detected object.
 
-#For LiveStream (Ip Stream URL Format i.e "rtsp://username:pass@ipaddress:portno/video/video.amp")
-python detect_dual_tracking.py --weights 'yolov9-c.pt' --source "your IP Camera Stream URL" --device 0
+2. **Tracking with DeepSORT**:
+   After detection, DeepSORT assigns each detected object a unique ID, allowing consistent tracking across frames. DeepSORT uses a combination of motion information (via Kalman filtering) and appearance features (via a deep learning-based association metric) to maintain accurate tracking.
 
-#for specific class (person)
-python detect_dual_tracking.py --weights 'yolov9-c.pt' --source 'your video.mp4' --device 0 --classes 0
+3. **Data Flow**:
+   - Each frame is processed by YOLOv9 to detect objects.
+   - The detections are passed to DeepSORT, which associates them with previously tracked objects based on similarity metrics.
+   - The final output is a video or sequence with each object consistently labeled across frames.
 
-#for detection and tracking with trails 
-!python detect_dual_tracking.py --weights 'yolov9-c.pt' --source 'your video.mp4' --device 0 --draw-trails 
-```
+## Problem It Solves
 
-- Output file will be created in the ```working-dir/runs/detect/obj-tracking``` with original filename
+This integrated system addresses several real-world challenges:
+- **Real-Time Multi-Object Tracking**: Ideal for applications that require instant feedback, such as live surveillance, autonomous vehicles, and event monitoring.
+- **Reduced Complexity in Data Analysis**: Provides structured data on object trajectories, which can be used for further analysis, like calculating movement patterns, density, and duration.
+- **Scalability**: Supports multiple objects and can adapt to various scenarios by simply adjusting detection classes or model configurations.
 
+## Getting Started
 
-### Watch the Complete Step by Step Explanation
+### Prerequisites
 
-- Video Tutorial Link  [`YouTube Link`](https://www.youtube.com/watch?v=Jx6oLBfDxRo)
+- **Python 3.10+**
+- **CUDA** (for GPU acceleration, optional but recommended)
+- Other dependencies are listed in `requirements.txt`.
 
+### Installation
 
-[![Watch the Complete Tutorial for the Step by Step Explanation](https://img.youtube.com/vi/Jx6oLBfDxRo/0.jpg)]([https://www.youtube.com/watch?v=Jx6oLBfDxRo](https://www.youtube.com/watch?v=Jx6oLBfDxRo))
-
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/username/YOLOv9-DeepSORT-Object-Tracking.git
+   cd YOLOv9-DeepSORT-Object-Tracking
+2. Install Dependecies:
+   ```bash
+   git install -r requirements.txt
